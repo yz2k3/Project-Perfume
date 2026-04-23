@@ -6,7 +6,7 @@ import hvit from './assets/hvit.jpg'
 const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 const CART_KEY = 'ecommerce-cart'
 
-export default function Landingpage() {
+export default function Landingpage({ onGoToCheckout }) {
   const [cart, setCart] = useState(() => {
     try {
       const saved = localStorage.getItem(CART_KEY)
@@ -47,7 +47,7 @@ export default function Landingpage() {
           <a className="nav-link" href={`mailto:${GMAIL}`}>Contact</a>
         </div>
 
-        <span className="nav-link nav-cart"> Cart
+        <span className="nav-link nav-cart" onClick={onGoToCheckout}> Cart
           {cart.length > 0 && <span className="cart-pill">{cart.length}</span>}
         </span>
       </nav>
