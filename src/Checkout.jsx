@@ -58,4 +58,14 @@ export default function Checkout({ onBackToSite }) {
     const total = + (subtotal + tax).toFixed(2)
     const totalQty = lines.reduce((s, l) => s + l.qty, 0)
 
+    function changeQty(id, delta) {
+        setLines(prev => {
+            const next = prev
+                .map(l => l.product.id === id ? { ...l, qty: l.qty + delta } : l)
+                .filter(l => l.qty > 0)
+            saveLines(next)
+            return next
+        })
+    }
+
 }
