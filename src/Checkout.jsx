@@ -342,7 +342,7 @@ export default function Checkout({ onBackToSite }) {
                                 <span>Subtotal</span><span>${subtotal.toFixed(2)}</span>
                             </div>
                             <div className="order-totals__row order-totals__row--muted">
-                                <span>Shipping</span><span>Calculated at next step</span>
+                                <span>Shipping</span><span>Free</span>
                             </div>
                             <div className="order-totals__row">
                                 <span>Taxes</span><span>${tax.toFixed(2)}</span>
