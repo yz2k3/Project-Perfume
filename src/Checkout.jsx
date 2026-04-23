@@ -99,5 +99,6 @@ export default function Checkout({ onBackToSite }) {
         window.scrollTo({ top: 0, behavior: 'smooth' })
     }
 
+    const [orderNum] = useState(() => Math.floor(Math.random() * 900000 + 100000))
 
 }
