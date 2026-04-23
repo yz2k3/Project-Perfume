@@ -392,6 +392,33 @@ export default function Checkout({ onBackToSite }) {
     )
 
 
+}
+function CheckoutNav({ onBackToSite, totalQty }) {
+    return (
+        <nav className="nav">
+            <div className="nav-logo" onClick={onBackToSite}>Maison Yanis</div>
+            <div className="nav-links">
+                <span className="nav-link" onClick={onBackToSite}>Collection</span>
+                <span className="nav-link" onClick={onBackToSite}>About</span>
+                <a className="nav-link" href={`mailto:${GMAIL}`}>Contact</a>
+            </div>
+            <span className="nav-link nav-cart">
+                Cart
+                {totalQty > 0 && <span className="cart-pill">{totalQty}</span>}
+            </span>
+        </nav>
+    )
+}
 
-
+function CheckoutFooter() {
+    return (
+        <footer className="footer">
+            <span className="footer__logo">Maison Yanis</span>
+            <div className="footer__links">
+                {NAV_LINKS.map(l => <span key={l} className="nav-link">{l}</span>)}
+            </div>
+            <span className="footer__copy">© 2026 Maison Yanis Fragrance</span>
+            <p className="footer__note">This project is non-commercial. All images are used for learning purposes only.</p>
+        </footer>
+    )
 }
