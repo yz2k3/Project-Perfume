@@ -101,4 +101,31 @@ export default function Checkout({ onBackToSite }) {
 
     const [orderNum] = useState(() => Math.floor(Math.random() * 900000 + 100000))
 
+    if (step === 'confirmed') {
+        return (
+            <div className="checkout-page">
+                <CheckoutNav onBackToSite={onBackToSite} totalQty={totalQty} />
+                <div className="checkout-confirmed">
+                    <div className="confirmed-check">✓</div>
+                    <p className="checkout-confirmed__eyebrow">Order confirmed</p>
+                    <h1 className="checkout-confirmed__title">Thank you, {form.firstName}.</h1>
+                    <p className="checkout-confirmed__body">
+                        A confirmation will be sent to <strong>{form.email}</strong>.<br />
+                        Your order is being prepared with care.
+                    </p>
+                    <p className="confirmed-note">
+                        Payment processed securely · Order #{orderNum}
+                    </p>
+                    <button className="btn-primary" onClick={onBackToSite}>
+                        Return to Maison Yanis
+                    </button>
+                </div>
+                <CheckoutFooter />
+            </div>
+        )
+    }
+
+
+
+
 }
