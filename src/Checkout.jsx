@@ -36,3 +36,26 @@ function saveLines(lines) {
     )
     localStorage.setItem(CART_KEY, JSON.stringify(flat))
 }
+
+export default function Checkout({ onBackToSite }) {
+    const [lines, setLines] = useState(loadLines)
+    const [step, setStep] = useState('information') // information | shipping | payment | complete  
+    const [form, setForm] = useState({
+        email: '', emailOffers: false,
+        firstName: '', lastName: '',
+        address: '', apartment: '',
+        city: '', zip: '',
+        country: 'United States', phone: '',
+    })
+    const [pay, setPay] = useState({
+        cardNumber: '', expiry: '', cvv: '', nameOnCard: '',
+    })
+
+    const [cardError, setCardError] = useState('')
+
+    const subtotal = lines.reduceRight((s, { product, qty }) => s + product.price * qty, 0)
+    const tax = +(subtotal * TAX_RATE).toFixed(2)
+    const total = + (subtotal + tax).toFixed(2)
+    const totalQty = lines.reduce((s, l) => s + l.qty, 0)
+
+}
