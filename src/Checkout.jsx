@@ -67,5 +67,37 @@ export default function Checkout({ onBackToSite }) {
             return next
         })
     }
+    function handleForm(e) {
+        const { name, value, type, checked } = e.target
+        setForm(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }))
+    }
+
+    function handlePay(e) {
+        const { name, value } = e.target
+        let v = value
+        if (name === 'cardNumber') v = formatCard(value)
+        if (name === 'expiry') v = formatExpiry(value)
+        if (name === 'cvv') v = value.replace(/\D/g, '').slice(0, 4)
+        setPay(prev => ({ ...prev, [name]: v }))
+        setCardError('')
+    }
+
+    function handleInfoSubmit(e) {
+        e.preventDefault()
+        setStep('payment')
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
+    function handlePaySubmit(e) {
+        e.preventDefault()
+        const digits = pay.cardNumber.replace(/\s/g, '')
+        if (digits.length < 16) { setCardError('Please enter a valid 16-digit card number.'); return }
+        if (pay.expiry.replace(/\s/g, '').length < 5) { setCardError('Please enter a valid expiry date.'); return }
+        if (pay.cvv.length < 3) { setCardError('Please enter your CVV.'); return }
+        if (!pay.nameOnCard.trim()) { setCardError('Please enter the name on your card.'); return }
+        setStep('confirmed')
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
 
 }
