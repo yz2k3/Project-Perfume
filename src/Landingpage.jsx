@@ -21,6 +21,7 @@ export default function Landingpage({ onGoToCheckout }) {
   }, [cart])
   const [visible, setVisible] = useState(false)
   const [addedId, setAddedId] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 100)
@@ -37,19 +38,27 @@ export default function Landingpage({ onGoToCheckout }) {
     <div className="page">
       <nav className="nav">
         <div className="nav-logo"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} >
+          onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setMenuOpen(false); }} >
           Maison Yanis
         </div>
 
-        <div className="nav-links">
-          <span className="nav-link" onClick={() => scrollTo('collection')}>Collection</span>
-          <span className="nav-link" onClick={() => scrollTo('story')}>About</span>
-          <a className="nav-link" href={`mailto:${GMAIL}`}>Contact</a>
+        <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          <span className="nav-link" onClick={() => { scrollTo('collection'); setMenuOpen(false); }}>Collection</span>
+          <span className="nav-link" onClick={() => { scrollTo('story'); setMenuOpen(false); }}>About</span>
+          <a className="nav-link" href={`mailto:${GMAIL}`} onClick={() => setMenuOpen(false)}>Contact</a>
         </div>
 
-        <span className="nav-link nav-cart" onClick={onGoToCheckout}> Cart
-          {cart.length > 0 && <span className="cart-pill">{cart.length}</span>}
-        </span>
+        <div className="nav-right">
+          <span className="nav-link nav-cart" onClick={() => { onGoToCheckout(); setMenuOpen(false); }}> Cart
+            {cart.length > 0 && <span className="cart-pill">{cart.length}</span>}
+          </span>
+          
+          <button className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </nav>
 
 
