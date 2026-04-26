@@ -51,6 +51,7 @@
     text-transform: uppercase;
     color: var(--color-charcoal);
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .nav-links {
@@ -61,6 +62,7 @@
 .nav-cart {
     display: flex;
     align-items: center;
+    white-space: nowrap;
 }
 
 /* ─── NAV LINK (shared utility) ──────────────────────────────────────────────── */
@@ -75,6 +77,7 @@
     transition: color 0.2s;
     cursor: pointer;
     transition: color 0.25s ease;
+    white-space: nowrap;
 }
 
 .nav-link::after {
@@ -733,6 +736,39 @@
         font-size: 12px;
     }
 
+    .story,
+    .hire {
+        grid-template-columns: 1fr;
+        padding: 60px 20px;
+        gap: 40px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        padding: 48px 20px;
+        gap: 32px;
+    }
+
+    .hire__right {
+        gap: 24px;
+    }
+
+    .hire__roles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+
+    .footer__links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+
     .btn-primary,
     .btn-outline,
     .btn-sand {
@@ -837,6 +873,35 @@
 
     .hero__image-label {
         font-size: 11px;
+    }
+
+    .story,
+    .hire {
+        grid-template-columns: 1fr;
+        padding: 48px 16px;
+        gap: 32px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        padding: 32px 16px;
+        gap: 24px;
+    }
+
+    .hire__roles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .footer__links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
     }
 
     .btn-primary,
@@ -949,6 +1014,35 @@
 
     .hero__image-label {
         font-size: 10px;
+    }
+
+    .story,
+    .hire {
+        grid-template-columns: 1fr;
+        padding: 32px 12px;
+        gap: 24px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        padding: 24px 12px;
+        gap: 16px;
+    }
+
+    .hire__roles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .footer__links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
     }
 
     .btn-primary,
